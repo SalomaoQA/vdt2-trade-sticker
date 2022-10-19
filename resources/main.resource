@@ -1,24 +1,22 @@
 *** Settings ***
-Documentation            Arquivo principal do projeto
+Documentation       Arquivo principal do projeto
 
-Library        Browser
-
-Resource        pages/login.resource
-Resource        pages/dash.resource
-
+Library             Browser
+Resource            pages/login.resource
+Resource            pages/dash.resource
 
 
 *** Keywords ***
 Do Login
+    [Arguments]    ${email}    ${password}
     Go To Login Page
-    Submit Credentials       papito@gmail.com    vaibrasil
-    User logged In
-
+    Submit Credentials    ${email}    ${password}
+    User Logged In
 
 Start Test
-    New Browser    headless=False
+    New Browser    headless=False    
 
-Finish Test    
-    Sleep                        1
+Finish Test
+    #Thinking Time
+    Sleep    0.5
     Take Screenshot
-
